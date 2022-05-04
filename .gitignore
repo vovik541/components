@@ -1,0 +1,26 @@
+### Java ###
+# Compiled class file
+*.class
+
+### Intellij Patch ###
+*.iml
+modules.xml
+.idea
+*.ipr
+
+# IntelliJ
+out/
+
+# Log file
+*.log
+
+# Package Files #
+/target
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.ini

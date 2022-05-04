@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Adding book</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <h1>LIBRARIAN CABINET</h1>
+</div>
+
+<div>
+    <h1>Add book</h1>
+</div>
+<div>
+    <form th:action="@{/librarian/add_book}" th:object="${book}"
+          method="post" style="max-width: 900px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Book Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{bookName}" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Author: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{author}" class="form-control"
+                           required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Description: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{description}" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Add book</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div>
+    <form th:action="@{/librarian/profile}" method="get">
+        <input type="submit" value="?ancel"/>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Adding book</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <h1>LIBRARIAN CABINET</h1>
+</div>
+
+<div>
+    <h1>Add book</h1>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>Book ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Is already books</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book: ${books}">
+        <td th:text="${book.id}">Book ID</td>
+        <td th:text="${book.bookName}">Name</td>
+        <td th:text="${book.author}">Author</td>
+        <td th:text="${book.description}">Description</td>
+        <td th:text="${book.isBooked}">Is already books</td>
+        <td>
+            <a th:href="@{'/librarian/edit/' + ${book.id}}">Edit</a>
+            &nbsp;&nbsp;&nbsp;
+            <a th:href="@{'/librarian/delete/' + ${book.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <form th:action="@{/librarian/profile}" method="get">
+        <input type="submit" value="Back"/>
+    </form>
+</div>
+
+</body>
+</html>
