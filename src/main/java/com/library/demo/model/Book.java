@@ -23,7 +23,7 @@ public class Book {
     @Column(nullable = false, length = 64)
     private String author;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 1200)
     private String description;
 
     @Column(name = "is_booked", nullable=false, length = 20)
