@@ -1,21 +1,63 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Welcome to CodeJava Home</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width-device-width, initial_scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href=".../static/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="bootstrap-autocomplete.min.js"></script>
+    <title>LIS</title>
 </head>
 <body>
-<div class="container text-center">
-    <h1>Welcome to CodeJava.net</h1>
-    <h3><a th:href="@{/librarian/profile}">/librarian/profile</a></h3>
-    <h3><a th:href="@{/reader/profile}">/reader/profile</a></h3>
-    <h3><a th:href="@{/register}">Register</a></h3>
-    <h3><a th:href="@{/login}">Login</a></h3>
-</div>
+<!--Navbar-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <a href="#" class="navbar-brand">Library Information System</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon">
+
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/register" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</nav>
+<!--Showcase-->
+<section class="bg-dark text-light p-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h1> Welcome to <span class="text-warning">library</span></h1>
+                <p class = "lead my-4">
+                    You can check if book you need is available
+                </p>
+<!--                <button class = "btn btn-primary btn-lg">Register</button>-->
+                <a href="/register" class = "btn btn-primary">Register</a>
+            </div>
+<!--            <img class = "img-fluid w-50 d-none d-sm-block" src="img/showcase.svg" alt="">-->
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

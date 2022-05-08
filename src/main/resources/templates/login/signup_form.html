@@ -6,59 +6,54 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootstraptema.ru/snippets/effect/2016/hover-button/btn-hvr.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:900,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    </head>
 <body>
-<div class="container text-center">
-    <div>
-        <h1>User Registration - Sign Up</h1>
-    </div>
-    <form th:action="@{/process_register}" th:object="${user}"
-          method="post" style="max-width: 600px; margin: 0 auto;">
-        <div class="m-3">
-            <div class="form-group row">
-                <label class="col-4 col-form-label">E-mail: </label>
-                <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control" required />
-                </div>
+<div class="container text-center" style="margin-top: 100px;">
+    <h1 class="hh">User Registration</h1>
+    <form th:action="@{/process_register}" th:object="${user}"method="post" class="card card-block m-x-auto bg-faded form-width">
+        <legend class="m-b-1 text-xs-center hh">SignUp</legend>
+        <div style="padding: 20px 60px;">
+            <div class="form-group input-group">
+                 <span class="has-float-label">
+                     <input th:field="*{lastName}" class="form-control" id="first" type="text" placeholder="First Name"/>
+                     <label for="first">First Name</label>
+                 </span>
+                <span class="has-float-label">
+                     <input th:field="*{firstName}" class="form-control" id="last" type="text" placeholder="Last Name"/>
+                     <label for="last">Last Name</label>
+                </span>
+            </div>
+            <div class="form-group input-group">
+                 <span class="input-group-addon">@</span>
+                 <span class="has-float-label">
+                 <input th:field="*{email}" class="form-control" id="email" type="email" placeholder="name@example.com"/>
+                 <label for="email">E-mail</label>
+                 </span>
             </div>
 
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Password: </label>
-                <div class="col-8">
-                    <input type="password" th:field="*{password}" class="form-control"
-                           required minlength="6" maxlength="10"/>
-                </div>
+            <div class="form-group has-float-label">
+                <input class="form-control" id="password" type="password" th:field="*{password}" placeholder="***************"/>
+                <label for="password">Password</label>
             </div>
 
-            <div class="form-group row">
-                <label class="col-4 col-form-label">First Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{firstName}" class="form-control"
-                           required minlength="2" maxlength="20"/>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Last Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{lastName}" class="form-control"
-                           required minlength="2" maxlength="20" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-4 col-form-label">login: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{login}" class="form-control"
-                           required minlength="2" maxlength="20" />
-                </div>
+            <div class="form-group input-group">
+                <span class="has-float-label">
+                    <input th:field="*{login}" class="form-control" id="login" type="text" placeholder="Login"/>
+                     <label for="login">Login</label>
+                </span>
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button class="btn btn-block hvr-outline-in btn-lg"type="submit">Sign Up</button>
             </div>
         </div>
     </form>
 </div>
 </body>
 </html>
+
