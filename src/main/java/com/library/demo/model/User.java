@@ -31,7 +31,7 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    @Column(name = "role", nullable = false, unique = true, length = 20)
+    @Column(name = "role", nullable = false, length = 20)
     private String role;
 
     @Column(name = "login", nullable = false, length = 20)
