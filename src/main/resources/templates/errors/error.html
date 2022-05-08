@@ -3,11 +3,39 @@
 <head>
     <title>Error page</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" href="css/main.css" href="@{/css/main.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootstraptema.ru/snippets/effect/2016/hover-button/btn-hvr.css" />
+    <style>
+        .btn.hvr-outline-in{
+             width: 300px;
+             background: orange;
+             margin-top: 450px;
+             font-family: 'Roboto', sans-serif;
+             font-size: 20px;
+             font-weight: 700;
+             color: white;
+
+        }
+       .btn.hvr-outline-in:before{
+       border: orange solid 4px;
+       }
+       .bb{
+        background-image: url(image/404.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        }
+       .btn-lg:hover{
+        background: orange;
+        color: white;
+        border: 0px solid black;
+        }
+  </style>
 </head>
-<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
-<h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
-<p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
-<a href="index.html" th:href="@{/index.html}">Back to Home Page</a>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}" class="bb">
+    <div class="container text-center">
+        <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+        <a href="index.html" href="@{/index.html}" class="btn hvr-outline-in btn-lg">Back to Home Page</a>
+    </div>
 </body>
 </html>
