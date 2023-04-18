@@ -1,7 +1,7 @@
 package com.library.demo.service;
 
 import com.library.demo.config.Roles;
-import com.library.demo.model.User;
+import com.library.demo.entity.User;
 import com.library.demo.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

@@ -1,6 +1,6 @@
 package com.library.demo.repo;
 
-import com.library.demo.model.User;
+import com.library.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

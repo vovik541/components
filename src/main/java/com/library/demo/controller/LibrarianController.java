@@ -1,19 +1,16 @@
 package com.library.demo.controller;
 
-import com.library.demo.model.Book;
-import com.library.demo.model.User;
+import com.library.demo.entity.Book;
+import com.library.demo.entity.dto.BookDTO;
 import com.library.demo.service.LibrarianService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
-import static com.library.demo.config.Roles.READER;
 
 @Controller
 @RequestMapping("/librarian")
@@ -57,7 +54,7 @@ public class LibrarianController {
 
     @GetMapping("/edit/{id}")
     public String updateRedirectBook(Model model, @PathVariable(name = "id") Long id) {
-        Book book = librarianService.findById(id);
+        BookDTO book = librarianService.findById(id);
         model.addAttribute("book", book);
         return "librarian/edit_book";
     }

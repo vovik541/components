@@ -1,6 +1,6 @@
 package com.library.demo.controller;
 
-import com.library.demo.model.User;
+import com.library.demo.entity.User;
 import com.library.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

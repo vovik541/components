@@ -1,4 +1,4 @@
-package com.library.demo.model;
+package com.library.demo.entity;
 
 import lombok.Data;
 

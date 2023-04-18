@@ -1,6 +1,6 @@
 package com.library.demo.service;
 
-import com.library.demo.model.Book;
+import com.library.demo.entity.Book;
 import com.library.demo.repo.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.library.demo.config.security;
 
-import com.library.demo.model.User;
+import com.library.demo.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,8 +1,8 @@
 package com.library.demo.controller;
 
 import com.library.demo.config.security.CustomUserDetails;
-import com.library.demo.model.Book;
-import com.library.demo.model.User;
+import com.library.demo.entity.Book;
+import com.library.demo.entity.User;
 import com.library.demo.repo.UserRepository;
 import com.library.demo.service.BookService;
 import com.library.demo.service.ReaderService;
@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
