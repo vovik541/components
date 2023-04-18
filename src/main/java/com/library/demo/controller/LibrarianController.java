@@ -21,7 +21,7 @@ public class LibrarianController {
 
     @GetMapping("/profile")
     public String readerMainPage(Model model) {
-        List<Book> books = librarianService.findAllBooks();
+        List<BookDTO> books = librarianService.findAllBooks();
         model.addAttribute("books", books);
         model.addAttribute("book", new Book());
         return "librarian/main_page";
@@ -35,13 +35,13 @@ public class LibrarianController {
 
     @GetMapping("/editing")
     public String redirectEditing(Model model) {
-        List<Book> books = librarianService.findAllBooks();
+        List<BookDTO> books = librarianService.findAllBooks();
         model.addAttribute("books", books);
         return "librarian/editing_books";
     }
 
     @PostMapping("/add_book")
-    public String addBook(Book book) {
+    public String addBook(BookDTO book) {
         librarianService.addBook(book);
         return "redirect:/librarian/profile";
     }
@@ -60,7 +60,7 @@ public class LibrarianController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateBook(Book book) {
+    public String updateBook(BookDTO book) {
         librarianService.updateBook(book);
         return "redirect:/librarian/profile";
     }
