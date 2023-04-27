@@ -1,19 +1,25 @@
 package com.library.demo.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.library.demo.config.security.CustomUserDetails;
 import com.library.demo.entity.Book;
 import com.library.demo.entity.User;
+import com.library.demo.entity.dto.BookDTO;
 import com.library.demo.repo.UserRepository;
+import com.library.demo.response.BooksListResponse;
 import com.library.demo.service.BookService;
 import com.library.demo.service.ReaderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -21,6 +27,7 @@ import java.util.List;
 @RequestMapping("/reader")
 @RequiredArgsConstructor
 public class ReaderController {
+
     private final ReaderService readerService;
     private final BookService bookService;
 
@@ -31,7 +38,7 @@ public class ReaderController {
         CustomUserDetails principal = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userName = principal.getUsername();
         User user = userRepository.findByLogin(userName);
-        List<Book> books = bookService.getBooksByUserId(user.getId());
+        List<BookDTO> books = bookService.getBooksByUserId(user.getId());
         model.addAttribute("books", books);
 
         return "reader/main_page";
@@ -39,7 +46,7 @@ public class ReaderController {
 
     @GetMapping("/search")
     public String findBookPage(Model model, Book book) {
-        List<Book> books = bookService.getAllByName(book.getBookName());
+        List<BookDTO> books = bookService.getAllByName(book.getBookName());
         model.addAttribute("books", books);
         model.addAttribute("searchBook", new Book());
 
@@ -48,7 +55,7 @@ public class ReaderController {
 
     @GetMapping("/find")
     public String findBookPage(Model model) {
-        List<Book> books = bookService.getAllAccessibleBooks();
+        List<BookDTO> books = bookService.getAllAccessibleBooks();
         model.addAttribute("books", books);
         model.addAttribute("searchBook", new Book());
 
@@ -60,7 +67,7 @@ public class ReaderController {
         CustomUserDetails principal = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userName = principal.getUsername();
         User user = userRepository.findByLogin(userName);
-        Book book = bookService.getById(id).get();
+        BookDTO book = bookService.getById(id).get();
         book.setUserId(user.getId());
         book.setBooked(true);
         bookService.updateBook(book);
@@ -69,7 +76,7 @@ public class ReaderController {
 
     @PostMapping("/give_back/{id}")
     public String deleteBook(@PathVariable(name = "id") Long id) {
-        Book book = bookService.getById(id).get();
+        BookDTO book = bookService.getById(id).get();
         book.setBooked(false);
         book.setUserId(null);
         bookService.updateBook(book);
