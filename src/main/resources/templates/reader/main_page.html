@@ -46,7 +46,7 @@
                     </p>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <form th:action="@{/reader/find}" method="get">
+                    <form th:action="@{/v1/reader/find}" method="get">
                         <button class="btn btn-outline-info btn-lg me-md-2" type="submit">Find book in library</button>
                     </form>
                 </div>
@@ -73,7 +73,7 @@
                 <td th:text="${book.author}">Author</td>
                 <td th:text="${book.description}">Description</td>
                 <td>
-                    <form th:action="@{'/reader/give_back/' + ${book.id}}" method="post">
+                    <form th:action="@{'/v1/reader/give_back/' + ${book.id}}" method="post">
                         <input class="btn btn-dark" type="submit" value="Give it back"/>
                     </form>
 

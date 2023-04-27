@@ -29,14 +29,14 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
         authorities.forEach(authority -> {
             if(authority.getAuthority().equals(READER.getFullRoleName())) {
                 try {
-                    redirectStrategy.sendRedirect(arg0, arg1, "/reader/profile");
+                    redirectStrategy.sendRedirect(arg0, arg1, "/v1/reader/profile");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             } else if(authority.getAuthority().equals(LIBRARIAN.getFullRoleName())) {
                 try {
-                    redirectStrategy.sendRedirect(arg0, arg1, "/librarian/profile");
+                    redirectStrategy.sendRedirect(arg0, arg1, "/v1/librarian/profile");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

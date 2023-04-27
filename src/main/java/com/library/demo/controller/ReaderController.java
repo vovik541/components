@@ -24,7 +24,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/reader")
+@RequestMapping("/v1/reader")
 @RequiredArgsConstructor
 public class ReaderController {
 
@@ -67,11 +67,11 @@ public class ReaderController {
         CustomUserDetails principal = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userName = principal.getUsername();
         User user = userRepository.findByLogin(userName);
-        BookDTO book = bookService.getById(id).get();
+        BookDTO book = bookService.getById(id, userName).get();
         book.setUserId(user.getId());
         book.setBooked(true);
         bookService.updateBook(book);
-        return "redirect:/reader/profile";
+        return "redirect:/v1/reader/profile";
     }
 
     @PostMapping("/give_back/{id}")
@@ -81,7 +81,7 @@ public class ReaderController {
         book.setUserId(null);
         bookService.updateBook(book);
 
-        return "redirect:/reader/profile";
+        return "redirect:/v1/reader/profile";
     }
 
 

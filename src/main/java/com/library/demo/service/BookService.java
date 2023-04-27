@@ -5,6 +5,7 @@ import com.library.demo.entity.Book;
 import com.library.demo.entity.dto.BookDTO;
 import com.library.demo.mapper.BookMapper;
 import com.library.demo.repo.BookRepository;
+import com.library.demo.request.GetBookRequest;
 import com.library.demo.response.BooksListResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,21 +57,24 @@ public class BookService {
         return response.getBody().getBooks();
     }
 
-    public Optional<BookDTO> getById(Long id) {
+    public Optional<BookDTO> getById(Long id, String userName) {
+        String url = userServiceUrl + "take_book";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate template = new RestTemplate();
 
-        String url = userServiceUrl + "take_book/{id}";
+        HttpEntity<String> request =
+                new HttpEntity<String>(new Gson().toJson(new GetBookRequest(id, userName)), headers);
 
+        ResponseEntity<BookDTO> responseEntityStr = template.
+                postForEntity(url, request, BookDTO.class);
 
-        URI uri = buildUrlForTemplate(new HashMap<>() {{
-            put("id", id.toString());
-        }}, url);
-
-        ResponseEntity<BookDTO> response = template.getForEntity(uri, BookDTO.class);
-
-        return Optional.of(response.getBody());
+        return Optional.of(responseEntityStr.getBody());
     }
-
+    public Optional<BookDTO> getById(Long id) {
+        return Optional.of(mapper.bookToBookDTO(bookRepository.getById(id)));
+    }
     public List<BookDTO> getBooksByUserId(Long userId) {
         RestTemplate template = new RestTemplate();
 
@@ -87,7 +91,7 @@ public class BookService {
 
     public void updateBook(BookDTO book) {
 
-
+        //todo
 
 
         mapper.bookToBookDTO(bookRepository.save(mapper.bookDTOToBook(book)));

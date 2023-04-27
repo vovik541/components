@@ -67,8 +67,8 @@
             <td th:text="${book.description}">Description</td>
             <td th:text="${book.isBooked}">Is already books</td>
             <td>
-                <a th:href="@{'/librarian/edit/'+${book.id}}" class = "btn btn-primary">Edit</a>
-                <a th:href="@{'/librarian/delete/' + ${book.id}}"class = "btn btn-secondary">Delete</a>
+                <a th:href="@{'/v1/librarian/edit/'+${book.id}}" class = "btn btn-primary">Edit</a>
+                <a th:href="@{'/v1/librarian/delete/' + ${book.id}}"class = "btn btn-secondary">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -93,7 +93,7 @@
 
 <section>
     <div class="d-sm-flex p-4 justify-content-between fixed-bottom">
-        <form th:action="@{/librarian/profile}" method="get">
+        <form th:action="@{/v1/librarian/profile}" method="get">
             <button class="btn btn-secondary btn-lg" type="submit">Back</button>
         </form>
     </div>

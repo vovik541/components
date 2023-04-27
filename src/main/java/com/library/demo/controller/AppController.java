@@ -31,7 +31,7 @@ public class AppController {
         return "users";
     }
 
-    @RequestMapping(value = "/librarian", method = RequestMethod.GET)
+    @RequestMapping(value = "/v1/librarian", method = RequestMethod.GET)
     public ModelAndView librarian() {
         ModelAndView model = new ModelAndView();
         model.setViewName("librarian");
