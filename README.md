@@ -16,3 +16,5 @@ After this you can try if maven downloaded by console command 'mvn -version'
 
 3.1 Download and install MySql:
 https://dev.mysql.com/downloads/installer/
+
+Swagger url = http://localhost:8080/swagger-ui.html#/
