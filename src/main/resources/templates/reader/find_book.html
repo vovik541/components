@@ -52,7 +52,7 @@
 
 
     <section class="bg-secondary  text-light p-5 ">
-        <form th:action="@{/v1/reader/search}" th:object="${searchBook}"
+        <form th:action="@{/api/v1/reader/search}" th:object="${searchBook}"
               method="get" style="max-width: 400px; margin: 0 auto;">
         <div class="container">
             <div class="d-md-flex justify-content-between align-items-center">
@@ -86,7 +86,7 @@
                 <td th:text="${book.description}">Description</td>
                 <td th:text="${book.isBooked}">Is already books</td>
                 <td>
-                    <form th:action="@{'/v1/reader/take_book/' + ${book.id}}" method="post">
+                    <form th:action="@{'/api/v1/reader/take_book/' + ${book.id}}" method="post">
                         <input class = "btn btn-primary" type="submit" value="Take this one"/>
                     </form>
                 </td>
@@ -99,7 +99,7 @@
 
     <section>
         <div class="d-sm-flex p-4 justify-content-between fixed-bottom">
-            <form th:action="@{/v1/reader/profile}" method="get">
+            <form th:action="@{/api/v1/reader/profile}" method="get">
 
                     <button class="btn btn-secondary btn-lg" type="submit">Cancel</button>
 

@@ -24,7 +24,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/v1/reader")
+@RequestMapping("/api/v1/reader")
 @RequiredArgsConstructor
 public class ReaderController {
 
@@ -71,7 +71,7 @@ public class ReaderController {
         book.setUserId(user.getId());
         book.setBooked(true);
         bookService.updateBook(book);
-        return "redirect:/v1/reader/profile";
+        return "redirect:/api/v1/reader/profile";
     }
 
     @PostMapping("/give_back/{id}")
@@ -81,7 +81,7 @@ public class ReaderController {
         book.setUserId(null);
         bookService.updateBook(book);
 
-        return "redirect:/v1/reader/profile";
+        return "redirect:/api/v1/reader/profile";
     }
 
 
