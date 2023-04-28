@@ -34,7 +34,7 @@ public class LibrarianService {
     private final BookRepository bookRepository;
 
     public void addBook(BookDTO book) {
-        String url = librarianMicroserviceUrl + "/add_book";
+        String url = librarianMicroserviceUrl + "/addBook";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

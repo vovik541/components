@@ -58,7 +58,7 @@ public class BookService {
     }
 
     public Optional<BookDTO> getById(Long id, String userName) {
-        String url = userServiceUrl + "take_book";
+        String url = userServiceUrl + "takeBook";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
