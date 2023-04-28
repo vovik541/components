@@ -61,7 +61,7 @@ public class LibrarianService {
 
         RestTemplate template = new RestTemplate();
 
-        String url = librarianMicroserviceUrl + "edit/{id}";
+        String url = librarianMicroserviceUrl + "editBook/{id}";
 
 
         URI uri = buildUrlForTemplate(new HashMap<>() {{
@@ -76,13 +76,13 @@ public class LibrarianService {
     public void deleteBookById(Long id) {
         RestTemplate template = new RestTemplate();
 
-        String url = librarianMicroserviceUrl + "delete/" + id.toString();
+        String url = librarianMicroserviceUrl + "deleteBook/" + id.toString();
 
         template.delete(url);
     }
 
     public void updateBook(BookDTO book) {
-        String url = librarianMicroserviceUrl + "/update/" + book.getId();
+        String url = librarianMicroserviceUrl + "/updateBook/" + book.getId();
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

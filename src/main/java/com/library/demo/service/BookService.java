@@ -35,7 +35,7 @@ public class BookService {
     public List<BookDTO> getAllAccessibleBooks() {
         RestTemplate template = new RestTemplate();
 
-        String url = userServiceUrl + "find";
+        String url = userServiceUrl + "findBook";
 
         ResponseEntity<BooksListResponse> response = template.getForEntity(url, BooksListResponse.class);
 
@@ -45,7 +45,7 @@ public class BookService {
     public List<BookDTO> getAllByName(String name) {
         RestTemplate template = new RestTemplate();
 
-        String url = userServiceUrl + "search/{name}";
+        String url = userServiceUrl + "searchBook/{name}";
 
 
         URI uri = buildUrlForTemplate(new HashMap<>() {{

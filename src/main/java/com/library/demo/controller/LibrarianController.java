@@ -40,26 +40,26 @@ public class LibrarianController {
         return "librarian/editing_books";
     }
 
-    @PostMapping("/add_book")
+    @PostMapping("/addBook")
     public String addBook(BookDTO book) {
         librarianService.addBook(book);
         return "redirect:/api/v1/librarian/profile";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteBook/{id}")
     public String deleteBook(@PathVariable(name = "id") Long id) {
         librarianService.deleteBookById(id);
         return "redirect:/api/v1/librarian/profile";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editBook/{id}")
     public String updateRedirectBook(Model model, @PathVariable(name = "id") Long id) {
         BookDTO book = librarianService.findById(id);
         model.addAttribute("book", book);
         return "librarian/edit_book";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/updateBook/{id}")
     public String updateBook(BookDTO book) {
         librarianService.updateBook(book);
         return "redirect:/api/v1/librarian/profile";

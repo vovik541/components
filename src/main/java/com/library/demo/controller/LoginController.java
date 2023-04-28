@@ -16,7 +16,7 @@ public class LoginController {
     @Autowired
     private UserRepository userRepo;
 
-    @PostMapping("/process_register")
+    @PostMapping("/processRegister")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());

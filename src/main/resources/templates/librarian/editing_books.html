@@ -67,8 +67,8 @@
             <td th:text="${book.description}">Description</td>
             <td th:text="${book.isBooked}">Is already books</td>
             <td>
-                <a th:href="@{'/api/v1/librarian/edit/'+${book.id}}" class = "btn btn-primary">Edit</a>
-                <a th:href="@{'/api/v1/librarian/delete/' + ${book.id}}"class = "btn btn-secondary">Delete</a>
+                <a th:href="@{'/api/v1/librarian/editBook/'+${book.id}}" class = "btn btn-primary">Edit</a>
+                <a th:href="@{'/api/v1/librarian/deleteBook/' + ${book.id}}"class = "btn btn-secondary">Delete</a>
             </td>
         </tr>
         </tbody>

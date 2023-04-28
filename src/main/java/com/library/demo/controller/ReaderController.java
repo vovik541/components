@@ -44,7 +44,7 @@ public class ReaderController {
         return "reader/main_page";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/searchBook")
     public String findBookPage(Model model, Book book) {
         List<BookDTO> books = bookService.getAllByName(book.getBookName());
         model.addAttribute("books", books);
@@ -53,7 +53,7 @@ public class ReaderController {
         return "reader/find_book";
     }
 
-    @GetMapping("/find")
+    @GetMapping("/findBook")
     public String findBookPage(Model model) {
         List<BookDTO> books = bookService.getAllAccessibleBooks();
         model.addAttribute("books", books);
@@ -62,7 +62,7 @@ public class ReaderController {
         return "reader/find_book";
     }
 
-    @PostMapping("/take_book/{id}")
+    @PostMapping("/takeBook/{id}")
     public String updateBook(@PathVariable("id") Long id) {
         CustomUserDetails principal = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userName = principal.getUsername();
@@ -74,7 +74,7 @@ public class ReaderController {
         return "redirect:/api/v1/reader/profile";
     }
 
-    @PostMapping("/give_back/{id}")
+    @PostMapping("/giveBackBook/{id}")
     public String deleteBook(@PathVariable(name = "id") Long id) {
         BookDTO book = bookService.getById(id).get();
         book.setBooked(false);
@@ -91,25 +91,25 @@ public class ReaderController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("find/{id}")
+    @GetMapping("findBook/{id}")
     public ResponseEntity<User> getReaderById(@PathVariable("id") Long id) {
         User user = readerService.findReaderById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addBook")
     public ResponseEntity<User> addReader(@RequestBody User user) {
         User newUser = readerService.addReader(user);
         return new ResponseEntity<>(newUser, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updateBook")
     public ResponseEntity<User> updateEmployee(@RequestBody User employee) {
         User updateEmployee = readerService.updateReader(employee);
         return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteBook/{id}")
     public ResponseEntity<?> deleteReader(@PathVariable("id") Long id) {
         readerService.deleteReader(id);
         return new ResponseEntity<>(HttpStatus.OK);
