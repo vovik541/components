@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/v1/librarian")
+@RequestMapping("/api/v1/librarians")
 @RequiredArgsConstructor
 public class LibrarianController {
 
@@ -43,13 +43,13 @@ public class LibrarianController {
     @PostMapping("/addBook")
     public String addBook(BookDTO book) {
         librarianService.addBook(book);
-        return "redirect:/api/v1/librarian/profile";
+        return "redirect:/api/v1/librarians/profile";
     }
 
     @RequestMapping("/deleteBook/{id}")
     public String deleteBook(@PathVariable(name = "id") Long id) {
         librarianService.deleteBookById(id);
-        return "redirect:/api/v1/librarian/profile";
+        return "redirect:/api/v1/librarians/profile";
     }
 
     @GetMapping("/editBook/{id}")
@@ -62,7 +62,7 @@ public class LibrarianController {
     @PostMapping("/updateBook/{id}")
     public String updateBook(BookDTO book) {
         librarianService.updateBook(book);
-        return "redirect:/api/v1/librarian/profile";
+        return "redirect:/api/v1/librarians/profile";
     }
 
 }

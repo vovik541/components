@@ -53,7 +53,7 @@
 
 
     <section class="bg-warning text-dark pt-3 pb-1 text-center text-sm-start">
-        <form th:action="@{/api/v1/librarian/addBook}" th:object="${book}"
+        <form th:action="@{/api/v1/librarians/addBook}" th:object="${book}"
               method="post" style="max-width: 900px; margin: 0 auto;">
 
             <div class="form-group row p-3">
@@ -94,7 +94,7 @@
 
 <section class="bg-dark">
 <div class="d-sm-flex justify-content-between">
-        <form th:action="@{/api/v1/librarian/editing}" method="get">
+        <form th:action="@{/api/v1/librarians/editing}" method="get">
             <div class="bg-dark p-4">
             <button class="btn btn-secondary btn-lg" type="submit">Cancel</button>
             </div>
